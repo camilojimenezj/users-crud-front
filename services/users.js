@@ -19,14 +19,9 @@ export const createUser = async (userData) => {
   const { data } = res
   return data
 }
-/* 
-export const update = async (id, newObject) => {
-  const config = {
-    headers: {
-      Authorization: token
-    }
-  }
-  const request = axios.put(`${baseUrl}/${id}`, newObject, config)
-  const response = await request
-  return response.data
-}  */
+
+export const updateUser = async (id, userData) => {
+  const res = await axios.patch(`${baseUrl}/${id}`, userData)
+   const { data } = res
+  return data
+} 

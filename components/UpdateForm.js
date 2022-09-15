@@ -1,10 +1,16 @@
-import { useState } from 'react'
-import { createUser } from '../services/users'
+import { useEffect, useState } from 'react'
+import { updateUser } from '../services/users'
 
-export default function UserForm({ setUsers }) {
-  const [name, setName] = useState('')
-  const [birth, setBirth] = useState('')
-  const [nit, setNit] = useState('')
+export default function UpdateForm({ user, setUsers }) {
+  const [name, setName] = useState(user.name)
+  const [birth, setBirth] = useState(user.birth)
+  const [nit, setNit] = useState(user.nit)
+
+  useEffect(() => {
+    setName(user.name)
+    setBirth(user.birth)
+    setNit(user.nit)
+  }, [user])
 
   const handleNameChange = (e) => {
     setName(e.target.value)
@@ -20,9 +26,9 @@ export default function UserForm({ setUsers }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const newUser = await createUser({ name, birth, nit })
-
-    setUsers(prevUsers => [...prevUsers, newUser])
+    const newUser = await updateUser(user.id, { name, birth, nit })
+  
+    setUsers(prevUsers => [...prevUsers.filter(prev => prev.id !== user.id), newUser])
   }
 
   return (

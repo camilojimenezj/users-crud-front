@@ -5,12 +5,11 @@ import Card from "../components/Card"
 import UserForm from "../components/UserForm"
 
 export default function index() {
-  const [users, setUsers] = useState([{name: "camilo"}])
+  const [users, setUsers] = useState([])
 
   useEffect(() => {
     getUsers().then((users) => {
       setUsers(users)
-      console.log(users)
     })
   }, [])
 
