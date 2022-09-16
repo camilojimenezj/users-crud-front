@@ -15,12 +15,12 @@ export default function UserForm({ setUsers }) {
   }
 
   const handleDocumentChange = (e) => {
-    setDocument(Number(e.target.value))
+    setDocument(e.target.value)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const newUser = await createUser({ name, birth, document })
+    const newUser = await createUser({ name, birth, document: Number(document) })
 
     setUsers(prevUsers => [...prevUsers, newUser])
 
@@ -35,21 +35,20 @@ export default function UserForm({ setUsers }) {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel">Add user</h5>
-
           </div>
           <form onSubmit={handleSubmit}>
             <div className="modal-body">
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">Name</label>
-                <input type='text' className='form-control' id='name' value={name} onChange={handleNameChange} />
+                <input type='text' className='form-control' id='name' value={name} onChange={handleNameChange} required />
               </div>
               <div className="mb-3">
                 <label htmlFor="date" className="form-label">Birth Date</label>
-                <input type='date' className='form-control' id='date' value={birth} onChange={handleBirthChange} />
+                <input type='date' className='form-control' id='date' value={birth} onChange={handleBirthChange} required />
               </div>
               <div className="mb-3">
                 <label htmlFor="document" className="form-label">Document</label>
-                <input type='text' id='document' className='form-control' value={document} onChange={handleDocumentChange} />
+                <input type='text' id='document' className='form-control' pattern="[0-9]*" value={document} onChange={handleDocumentChange} required />
               </div>
             </div>
             <div className="modal-footer">

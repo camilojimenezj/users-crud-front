@@ -10,6 +10,8 @@ export default function Card({ user, setUsers }) {
 
 
   return (
+
+
     <tr scope="row">
       <td className="pl-0">
         <div className="d-flex align-items-center">{user.name}</div>
@@ -20,11 +22,12 @@ export default function Card({ user, setUsers }) {
       <td>{user.document}</td>
       <td>
         <div className="d-flex icon">
-          <i className="fa fa-pen"></i>
+          <i className="fa fa-pen" data-bs-toggle="modal" data-bs-target={"#modal" + user.id}></i>
           <i className="fa fa-trash" onClick={handleDelete}></i>
         </div>
+        <UpdateForm user={user} setUsers={setUsers} />
       </td>
-      {/* <UpdateForm user={user} setUsers={setUsers} /> */}
     </tr>
+
   )
 }

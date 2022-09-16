@@ -4,6 +4,7 @@ import { getUsers } from "../services/users"
 import Card from "../components/Card"
 import UserForm from "../components/UserForm"
 
+
 export default function index() {
   const [users, setUsers] = useState([])
 
