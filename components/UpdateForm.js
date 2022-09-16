@@ -3,13 +3,13 @@ import { updateUser } from '../services/users'
 
 export default function UpdateForm({ user, setUsers }) {
   const [name, setName] = useState(user.name)
-  const [birth, setBirth] = useState(user.birth)
-  const [nit, setNit] = useState(user.nit)
+  const [birth, setBirth] = useState()
+  const [document, setDocument] = useState(user.document)
 
   useEffect(() => {
     setName(user.name)
-    setBirth(user.birth)
-    setNit(user.nit)
+    setBirth()
+    setDocument(user.document)
   }, [user])
 
   const handleNameChange = (e) => {
@@ -20,13 +20,13 @@ export default function UpdateForm({ user, setUsers }) {
     setBirth(e.target.value)
   }
 
-  const handleNitChange = (e) => {
-    setNit(Number(e.target.value))
+  const handledocumentChange = (e) => {
+    setDocument(Number(e.target.value))
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const newUser = await updateUser(user.id, { name, birth, nit })
+    const newUser = await updateUser(user.id, { name, birth, document })
   
     setUsers(prevUsers => [...prevUsers.filter(prev => prev.id !== user.id), newUser])
   }
@@ -35,7 +35,7 @@ export default function UpdateForm({ user, setUsers }) {
     <form onSubmit={handleSubmit}>
       <input type='text' placeholder='name' value={name} onChange={handleNameChange} />
       <input type='date' placeholder='birth date' value={birth} onChange={handleBirthChange} />
-      <input type='text' placeholder='nit' value={nit} onChange={handleNitChange} />
+      <input type='text' placeholder='document' value={document} onChange={handledocumentChange} />
       <button>Submit</button>
     </form>
   )

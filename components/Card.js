@@ -13,7 +13,7 @@ export default function Card({ user, setUsers }) {
     <div style={{padding: '20px'}}>
       <div>{ user.name }</div>
       <div>{ moment(user.birth).format('Do MMM YYYY') }</div>
-      <div>{ user.nit }</div>
+      <div>{ user.document }</div>
       <button onClick={handleDelete}>Delete</button>
       <button>Update</button>
       <UpdateForm user={user} setUsers={setUsers} />
