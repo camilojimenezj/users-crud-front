@@ -17,27 +17,28 @@ export default function index() {
 
   return (
     <Container>
-   
-      {/* <UserForm setUsers={setUsers} /> */}
       <table className="table table-striped custom-table">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Birth Date</th>
-                <th scope="col">Document</th>
-                <th scope="col"></th>
-              </tr>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Birth Date</th>
+            <th scope="col">Document</th>
+            <th scope="col"></th>
+          </tr>
         </thead>
         <tbody>
-      {
-        users.map((user, i) => 
-          <Card user={user} key={i} setUsers={setUsers} />
-        )
-        }
+          {
+            users.map((user, i) =>
+              <Card user={user} key={i} setUsers={setUsers} />
+            )
+          }
 
         </tbody>
       </table>
-      <button type="button" class="btn btn-outline-primary">Add User</button>
+      <button type="button" className="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add User
+      </button>
+      <UserForm setUsers={setUsers} />
     </Container>
   )
 }
