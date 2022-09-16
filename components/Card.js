@@ -10,13 +10,42 @@ export default function Card({ user, setUsers }) {
 
 
   return (
-    <div style={{padding: '20px'}}>
-      <div>{ user.name }</div>
-      <div>{ moment(user.birth).format('Do MMM YYYY') }</div>
-      <div>{ user.document }</div>
-      <button onClick={handleDelete}>Delete</button>
-      <button>Update</button>
-      <UpdateForm user={user} setUsers={setUsers} />
-    </div>
+    <tr scope="row">
+      <td class="pl-0">
+        <div class="d-flex align-items-center">{user.name}</div>
+      </td>
+      <td>
+        <div>{moment(user.birth).format('Do MMM YYYY')}</div>
+      </td>
+      <td>{user.document}</td>
+      <td>
+        <div class="d-flex icon">
+          <i class="fa fa-pen"></i>
+          <i class="fa fa-trash" onClick={handleDelete}></i>
+        </div>
+      </td>
+      {/* <UpdateForm user={user} setUsers={setUsers} /> */}
+    </tr>
   )
 }
+/* 
+<tr scope="row">
+                <td class="pl-0">
+                  <div class="d-flex align-items-center">
+                    Jhoan Esteban Londoño Escobar
+                  </div>
+                </td>
+
+                <td>
+                  <div>12/23/1124</div>
+                </td>
+                <td>1035236359</td>
+
+                <td>
+                  <div class="d-flex icon">
+                    <i class="fa fa-pen"></i>
+                    <i class="fa fa-trash"></i>
+                  </div>
+                </td>
+              </tr>
+ */
